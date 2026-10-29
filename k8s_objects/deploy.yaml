@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pe-app
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pe-app
+  template:
+    metadata:
+      labels:
+        app: pe-app
+    spec:
+      containers:
+      - name: pe-app
+        image: glodean19/platform_engineer_app:v2
+        ports:
+        - containerPort: 5000
