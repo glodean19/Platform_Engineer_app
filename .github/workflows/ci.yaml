@@ -22,4 +22,4 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: glodean19/platform_engineer_app:103bf14e5582686c9280854cd2c5abea241c7de7
+          tags: glodean19/platform_engineer_app:${{ github.sha }}
