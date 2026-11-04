@@ -27,4 +27,4 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: glodean19/platform_engineer_app:${{ env.COMMIT_ID }}
+          tags: glodean19/platform_engineer_app:${{ env.COMMIT_ID}}
