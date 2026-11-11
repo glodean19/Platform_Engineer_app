@@ -52,14 +52,8 @@ jobs:
       - name: Modify values file
         shell: bash
         run: |
-          python -c "
-          import yaml
-          with open('values.yaml', 'r') as f:
-              data = yaml.safe_load(f)
-          data['image']['tag'] = '${{ needs.ci.outputs.commit_id }}'
-          with open('values.yaml', 'w') as f:
-              yaml.safe_dump(data, f, default_flow_style=False)
-          "
+          echo ${{ needs.ci.outputs.commit_id }}
+          pip install yq
 
       - name: Install argocd
         shell: bash
