@@ -52,8 +52,14 @@ jobs:
       - name: Modify values file
         shell: bash
         run: |
-          echo ${{ needs.ci.outputs.commit_id }}
-          pip install yq
+          IMAGE_TAG="${{ needs.ci.outputs.commit_id }}"
+
+          echo "Updating image tag to: $IMAGE_TAG"
+
+          sed -i "s/tag: .*/tag: ${IMAGE_TAG}/" charts/pe-app/values.yaml
+
+          echo "Updated values.yaml:"
+          cat charts/pe-app/values.yaml
 
       - name: Install argocd
         shell: bash
