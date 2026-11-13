@@ -5,7 +5,7 @@ image:
 
   pullPolicy: IfNotPresent
   
-  tag: v2
+  tag: "5dd96c"
 
 imagePullSecrets: []
 
