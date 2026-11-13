@@ -42,9 +42,10 @@ jobs:
         shell: bash
         run: |
           echo ${{ needs.ci.outputs.commit_id }}
-          curl -sL https://github.com -o /tmp/yq
-          chmod +x /tmp/yq
-          /tmp/yq -i '.image.tag = "${{ needs.ci.outputs.commit_id }}"' charts/python-app/values.yaml
+          rm -f /tmp/yq
+          pip install --user yq
+          export PATH="$HOME/.local/bin:$PATH"
+          yq -Yi '.image.tag = "${{ needs.ci.outputs.commit_id }}"' charts/python-app/values.yaml
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
