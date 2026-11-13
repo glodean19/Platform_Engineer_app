@@ -43,8 +43,8 @@ jobs:
         run: |
           echo ${{ needs.ci.outputs.commit_id }}
           rm -f /tmp/yq
-          sed -i 's/tag:.*/tag: "${{ needs.ci.outputs.commit_id }}"/' charts/python-app/values.yaml
-          cat charts/python-app/values.yaml
+          sed -i 's/tag:.*/tag: "${{ needs.ci.outputs.commit_id }}"/' charts/pe-app/values.yaml
+          cat charts/pe-app/values.yaml
 
 
       - name: Commit changes
